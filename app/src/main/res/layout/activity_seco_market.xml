@@ -1,0 +1,307 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <RelativeLayout
+        android:id="@+id/sec_one"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5CACEE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageView
+                android:id="@+id/sec_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/backhome"
+                />
+            <TextView
+                android:id="@+id/sec_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="23dp"
+                android:text="二手市场"/>
+
+            <ImageView
+                android:id="@+id/sec_index"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/sec_back"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/back"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/sec_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sec_one">
+
+      <RelativeLayout
+          android:id="@+id/sec_search"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="10dp">
+          <EditText
+              android:id="@+id/sec_et_search"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@android:drawable/edit_text"
+              android:ems="10"
+              android:singleLine="true"
+              android:hint="输入名称"/>
+
+          <Button
+              android:id="@+id/sec_bt_search"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_toRightOf="@+id/sec_et_search"
+              android:text="搜索"
+              android:textSize="18sp"
+              android:layout_alignBottom="@+id/sec_et_search"
+              />
+
+      </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/sec_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sec_two"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp">
+
+        <RelativeLayout
+            android:id="@+id/sec_book"
+            android:background="#FFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/sec_iv_book"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@mipmap/logo"
+                android:layout_marginLeft="15dp"
+                />
+
+            <TextView
+                android:id="@+id/sec_tv_book"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/sec_iv_book"
+                android:layout_centerVertical="true"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:text="书籍        "/>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/sec_electronic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/sec_book"
+            android:background="#FFFFFF"
+            android:layout_marginLeft="15dp">
+
+            <ImageView
+                android:id="@+id/sec_iv_electronic"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@mipmap/logo"
+                android:layout_marginLeft="15dp"
+                />
+
+            <TextView
+                android:id="@+id/sec_tv_electronic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/sec_iv_electronic"
+                android:layout_centerVertical="true"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:text="电子产品"/>
+
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/sec_sport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sec_book"
+            android:background="#FFFFFF"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/sec_iv_sport"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@mipmap/logo"
+                android:layout_marginLeft="15dp"
+                />
+
+            <TextView
+                android:id="@+id/sec_tv_sport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/sec_iv_sport"
+                android:layout_centerVertical="true"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:text="体育用品"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/sec_ride"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/sec_sport"
+            android:layout_below="@+id/sec_electronic"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:background="#FFFFFF"
+        >
+
+            <ImageView
+                android:id="@+id/sec_iv_ride"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@mipmap/logo"
+                android:layout_marginLeft="15dp"
+                />
+
+            <TextView
+                android:id="@+id/sec_tv_ride"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/sec_iv_ride"
+                android:layout_centerVertical="true"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:text="校园代步"/>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/sec_clothes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sec_sport"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            >
+
+            <ImageView
+                android:id="@+id/sec_iv_clothes"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@mipmap/logo"
+                android:layout_marginLeft="15dp"
+                />
+
+            <TextView
+                android:id="@+id/sec_tv_clothes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/sec_iv_clothes"
+                android:layout_centerVertical="true"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:text="衣服鞋帽"/>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/sec_others"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sec_sport"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/sec_clothes"
+            android:layout_marginLeft="15dp"
+            android:background="#FFFFFF"
+            >
+
+            <ImageView
+                android:id="@+id/sec_iv_others"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@mipmap/logo"
+                android:layout_marginLeft="15dp"
+                />
+
+            <TextView
+                android:id="@+id/sec_tv_others"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/sec_iv_others"
+                android:layout_centerVertical="true"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:text="其他        "/>
+
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/sec_publish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:layout_below="@+id/sec_others"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:text="发布"/>
+
+
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/sec_four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <include
+            layout="@layout/menulayout"
+            android:id="@+id/sec_include"
+            />
+    </RelativeLayout>
+</RelativeLayout>

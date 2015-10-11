@@ -1,6 +1,7 @@
 package com.zhimei.weixiaoyuan;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -23,7 +24,8 @@ import java.util.HashMap;
 
 public class MainActivity extends Activity  {
     private GridView gridview;
-    private ImageView perSeeting;
+    private ImageView perSetting;
+    private ImageView secondMarket;
     private ArrayList<Goods> goods_list;
     private Spinner mySpinner1;
     private Spinner mySpinner2;
@@ -42,7 +44,8 @@ public class MainActivity extends Activity  {
         initreso();
     }
     void initview(){
-        perSeeting=(ImageView)findViewById(R.id.per_icon);
+        perSetting=(ImageView)findViewById(R.id.per_icon);
+        secondMarket=(ImageView)findViewById(R.id.sec_icon);
         gridview=(GridView)findViewById(R.id.gridview);
         mySpinner1=(Spinner)findViewById(R.id.spinner1);
         mySpinner2=(Spinner)findViewById(R.id.spinner2);
@@ -55,10 +58,19 @@ public class MainActivity extends Activity  {
         mySpinner1.setAdapter(spi_adapter_1);
         mySpinner2.setAdapter(spi_adapter_2);
 
-        perSeeting.setOnClickListener(new View.OnClickListener() {
+        perSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "这是一个试验", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, PersonCenterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        secondMarket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,SecoMarketActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -75,6 +87,7 @@ public class MainActivity extends Activity  {
                     public void run() {
                         swipeLayout.setRefreshing(false);
                         //进行数据更新
+                        Toast.makeText(MainActivity.this,"正在进行数据更新",Toast.LENGTH_SHORT).show();
                     }
                 }, 1000);
             }

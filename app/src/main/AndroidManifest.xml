@@ -25,6 +25,14 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
+        <activity
+            android:name=".PersonCenterActivity"
+            android:label="@string/title_activity_person_center" >
+        </activity>
+        <activity
+            android:name=".SecoMarketActivity"
+            android:label="@string/title_activity_seco_market" >
+        </activity>
     </application>
 
 </manifest>

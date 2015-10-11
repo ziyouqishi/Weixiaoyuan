@@ -22,21 +22,20 @@
 
         >
         <ImageView
-            android:id="@+id/per_icon"
+            android:id="@+id/sch_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/touxiang"
+            android:src="@drawable/chaoshi"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/per_icon"
+            android:layout_below="@+id/sch_icon"
             android:layout_centerHorizontal="true"
-            android:text="个人中心"
-            android:textSize="12sp"
+            android:text="校园超市"
             android:textColor="#080808"
-             />
+            android:textSize="12sp"/>
 
     </RelativeLayout>
 
@@ -99,21 +98,25 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/donation"
         >
+
+
+
         <ImageView
-            android:id="@+id/sch_icon"
+            android:id="@+id/per_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/chaoshi"
+            android:src="@drawable/touxiang"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/sch_icon"
+            android:layout_below="@+id/per_icon"
             android:layout_centerHorizontal="true"
-            android:text="校园超市"
+            android:text="个人中心"
+            android:textSize="12sp"
             android:textColor="#080808"
-            android:textSize="12sp"/>
+            />
     </RelativeLayout>
 
 

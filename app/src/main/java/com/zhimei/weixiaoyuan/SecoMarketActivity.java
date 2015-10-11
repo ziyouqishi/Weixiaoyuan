@@ -10,28 +10,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-public class LoginActivity extends Activity {
+public class SecoMarketActivity extends Activity {
     private ImageView back;
     private ImageView backhome;
-    private TextView register;
-    private Button login;
     private ImageView perSettings;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_seco_market);
         initview();
     }
 
     void initview(){
-        back=(ImageView)findViewById(R.id.log_back);
-        backhome=(ImageView)findViewById(R.id.log_index);
-        register=(TextView)findViewById(R.id.log_tv_rigister);
-        login=(Button)findViewById(R.id.log_ensure_bu);
+        back=(ImageView)findViewById(R.id.sec_back);
+        backhome=(ImageView)findViewById(R.id.sec_index);
         perSettings=(ImageView)findViewById(R.id.per_icon);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -45,26 +41,8 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                Intent intent=new Intent(SecoMarketActivity.this,MainActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(LoginActivity.this,"登录验证",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -72,10 +50,12 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent=new Intent(LoginActivity.this,PersonCenterActivity.class);
+                Intent intent=new Intent(SecoMarketActivity.this,MainActivity.class);
                 startActivity(intent);
             }
         });
+
+
     }
 
 }
