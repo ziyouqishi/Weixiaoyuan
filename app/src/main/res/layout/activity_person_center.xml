@@ -58,18 +58,38 @@
 
       <RelativeLayout
           android:id="@+id/per_image"
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_centerHorizontal="true"
-          android:layout_marginTop="20dp"
+          android:background="@mipmap/bg"
+
           >
+
+          <RelativeLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true">
+
           <ImageView
               android:id="@+id/per_iv_image"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:src="@mipmap/logo"
-
+              android:src="@mipmap/test"
+              android:layout_centerHorizontal="true"
               />
+
+          <TextView
+              android:id="@+id/per_tv_name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="21dp"
+              android:text="仗义的猴子"
+              android:layout_below="@+id/per_iv_image"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="10dp"
+              android:textColor="#EE0000"/>
+
+          </RelativeLayout>
+
 
       </RelativeLayout>
 

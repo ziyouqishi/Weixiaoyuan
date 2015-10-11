@@ -85,7 +85,7 @@
 
 
 
-    <RelativeLayout
+    <!--<RelativeLayout
         android:id="@+id/sec_three"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -272,7 +272,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="15sp"
                 android:layout_marginLeft="15dp"
-                android:text="其他        "/>
+                android:text="其他        "/
 
 
         </RelativeLayout>
@@ -291,7 +291,32 @@
     </RelativeLayout>
 
 
+>-->
+    <GridView
+        android:id="@+id/sec_gridview"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        android:verticalSpacing="2dp"
+        android:horizontalSpacing="2dp"
+        android:columnWidth="2dp"
+        android:stretchMode="columnWidth"
+        android:layout_below="@+id/sec_two"
+        android:layout_marginTop="8dp"
+        >
 
+    </GridView>
+
+    <Button
+        android:id="@+id/sec_publish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:background="#98F5FF"
+        android:text="发布"/>
 
     <RelativeLayout
         android:id="@+id/sec_four"

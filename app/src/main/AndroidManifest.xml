@@ -33,6 +33,10 @@
             android:name=".SecoMarketActivity"
             android:label="@string/title_activity_seco_market" >
         </activity>
+        <activity
+            android:name=".DonateActivity"
+            android:label="@string/title_activity_donate" >
+        </activity>
     </application>
 
 </manifest>
