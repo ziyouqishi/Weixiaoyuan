@@ -18,7 +18,6 @@ public class LoginActivity extends Activity {
     private ImageView backhome;
     private TextView register;
     private Button login;
-    private ImageView perSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,6 @@ public class LoginActivity extends Activity {
         backhome=(ImageView)findViewById(R.id.log_index);
         register=(TextView)findViewById(R.id.log_tv_rigister);
         login=(Button)findViewById(R.id.log_ensure_bu);
-        perSettings=(ImageView)findViewById(R.id.per_icon);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,14 +66,6 @@ public class LoginActivity extends Activity {
             }
         });
 
-        perSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                Intent intent=new Intent(LoginActivity.this,PersonCenterActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
 }

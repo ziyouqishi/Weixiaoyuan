@@ -16,7 +16,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.zhimei.utitls.Goods;
+import com.zhimei.utitls.SecondHandGoods;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +26,9 @@ public class MainActivity extends Activity  {
     private GridView gridview;
     private ImageView perSetting;
     private ImageView secondMarket;
-    private ArrayList<Goods> goods_list;
+    private ImageView donate;
+    private ImageView shopping;
+    private ArrayList<SecondHandGoods> goods_list;
     private Spinner mySpinner1;
     private Spinner mySpinner2;
     private ArrayAdapter spi_adapter_1;
@@ -46,6 +48,8 @@ public class MainActivity extends Activity  {
     void initview(){
         perSetting=(ImageView)findViewById(R.id.per_icon);
         secondMarket=(ImageView)findViewById(R.id.sec_icon);
+        donate=(ImageView)findViewById(R.id.don_icon);
+        shopping=(ImageView)findViewById(R.id.sch_icon);
         gridview=(GridView)findViewById(R.id.gridview);
         mySpinner1=(Spinner)findViewById(R.id.spinner1);
         mySpinner2=(Spinner)findViewById(R.id.spinner2);
@@ -70,6 +74,22 @@ public class MainActivity extends Activity  {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,SecoMarketActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        donate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DonateActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        shopping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SuperMarketActivity.class);
                 startActivity(intent);
             }
         });
@@ -100,7 +120,7 @@ public class MainActivity extends Activity  {
      *资源初始化
      */
     void initreso(){
-        goods_list=new ArrayList<Goods>();
+        goods_list=new ArrayList<SecondHandGoods>();
         item_list = new ArrayList<HashMap<String, Object>>();
         animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.myanim);
         /**
@@ -109,13 +129,13 @@ public class MainActivity extends Activity  {
        // Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.goods);
         //模拟了六个商品
         int test=R.drawable.goods;
-        Goods good1=new Goods(test,"22.2","墙纸","2天前","23人围观");
-        Goods good2=new Goods(test,"312.2","墙纸2","5天前","23人围观");
-        Goods good3=new Goods(test,"34.2","墙纸3","6天前","13人围观");
-        Goods good4=new Goods(test,"52.2","墙纸4","1天前","0人围观");
-        Goods good5=new Goods(test,"62.2","墙纸5","3天前","13人围观");
-        Goods good6=new Goods(test,"72.2","墙纸6","4天前","73人围观");
-        Goods good7=new Goods(test,"32.2","墙纸7","2天前","3人围观");
+        SecondHandGoods good1=new SecondHandGoods(test,"22.2","墙纸","2天前","23人围观");
+        SecondHandGoods good2=new SecondHandGoods(test,"312.2","墙纸2","5天前","23人围观");
+        SecondHandGoods good3=new SecondHandGoods(test,"34.2","墙纸3","6天前","13人围观");
+        SecondHandGoods good4=new SecondHandGoods(test,"52.2","墙纸4","1天前","0人围观");
+        SecondHandGoods good5=new SecondHandGoods(test,"62.2","墙纸5","3天前","13人围观");
+        SecondHandGoods good6=new SecondHandGoods(test,"72.2","墙纸6","4天前","73人围观");
+        SecondHandGoods good7=new SecondHandGoods(test,"32.2","墙纸7","2天前","3人围观");
 
         goods_list.add(good1);
         goods_list.add(good2);

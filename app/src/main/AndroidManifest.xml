@@ -37,6 +37,10 @@
             android:name=".DonateActivity"
             android:label="@string/title_activity_donate" >
         </activity>
+        <activity
+            android:name=".SuperMarketActivity"
+            android:label="@string/title_activity_super_market" >
+        </activity>
     </application>
 
 </manifest>

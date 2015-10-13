@@ -22,7 +22,6 @@ import java.util.HashMap;
 public class SecoMarketActivity extends Activity {
     private ImageView back;
     private ImageView backhome;
-    private ImageView perSettings;
     private GridView gv;
     private ArrayList<HashMap<String, Object>> item_list;
     private  SimpleAdapter type_adapter;
@@ -93,7 +92,7 @@ public class SecoMarketActivity extends Activity {
         gv=(GridView)findViewById(R.id.sec_gridview);
         back=(ImageView)findViewById(R.id.sec_back);
         backhome=(ImageView)findViewById(R.id.sec_index);
-        perSettings=(ImageView)findViewById(R.id.per_icon);
+
         gv.setAdapter(type_adapter);
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -118,14 +117,6 @@ public class SecoMarketActivity extends Activity {
             }
         });
 
-        perSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                Intent intent=new Intent(SecoMarketActivity.this,PersonCenterActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
     }

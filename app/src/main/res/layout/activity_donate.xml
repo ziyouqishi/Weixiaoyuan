@@ -44,55 +44,88 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/don_two"
+        android:id="@+id/don_four"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/don_one"
+        android:background="@mipmap/donate_2">
+
+    </RelativeLayout>
+
+
+
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/don_one">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/don_four"
+        >
 
-        <EditText
-            android:id="@+id/don_et_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/edit_text"
-            android:hint="请添加捐赠物名称"
-            android:layout_marginTop="12dp"
-            />
-
-
-        <EditText
-            android:id="@+id/don_et_describle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/edit_text"
-            android:hint="亲，请描述下你的捐赠品，具体包括购买时间，几成新等内容"
-            android:layout_marginTop="12dp"
-            android:layout_below="@+id/don_et_name"
-            android:lines="3"
-            />
-
-        <ImageButton
-            android:id="@+id/don_ib_photo"
+        <RelativeLayout
+            android:id="@+id/don_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            />
+            >
+
+            <EditText
+                android:id="@+id/don_et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:hint="请添加捐赠物名称"
+                android:layout_marginTop="12dp"
+                android:layout_margin="8dp"
+                />
 
 
+            <EditText
+                android:id="@+id/don_et_describle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:hint="亲，请描述下你的捐赠品，具体包括购买时间，几成新等内容"
+                android:layout_marginTop="12dp"
+                android:layout_below="@+id/don_et_name"
+                android:lines="3"
+                android:layout_margin="8dp"
+                />
 
-    </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/add_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/don_et_describle"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp">
+
+                <ImageButton
+                    android:id="@+id/don_ib_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/addphoto"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="添加照片"
+                    android:textSize="17sp"
+                    android:layout_below="@+id/don_ib_photo"/>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/ensure_donate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/add_photo"
+                android:layout_margin="15dp"
+                android:background="#4EEE94"
+                android:text="捐赠"/>
 
 
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/don_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <include
-            layout="@layout/menulayout"
-            android:id="@+id/include"
-            />
-    </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
