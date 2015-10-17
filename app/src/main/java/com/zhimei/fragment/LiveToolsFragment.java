@@ -6,10 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.zhimei.utitls.MyAdapter;
+import com.zhimei.utitls.MyApplication;
 import com.zhimei.utitls.ShopGoods;
 import com.zhimei.weixiaoyuan.R;
 
@@ -22,6 +25,7 @@ public class LiveToolsFragment extends Fragment {
     private ArrayList<HashMap<String,Object>> al_map;
     private ListView lv;
     private  View view;
+    private Button buy;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,6 +40,7 @@ public class LiveToolsFragment extends Fragment {
         al_goods=new ArrayList<>();
         al_map=new ArrayList<>();
         lv=(ListView)view.findViewById(R.id.lv_live);
+        buy=(Button) view.findViewById(R.id.already_choosed);
 
         int test=R.drawable.goods;
 
@@ -54,21 +59,21 @@ public class LiveToolsFragment extends Fragment {
             al_map.add(map);
         }
 
-
-        SimpleAdapter goods_adapter = new SimpleAdapter(view.getContext(),
-                al_map,// 数据源
-                R.layout.shopitem,// 显示布局
-                new String[] { "picture", "name","state","price","sell" },
-                new int[] { R.id.shop_good_picture, R.id.shop_good_name,R.id.shop_good_state,
-                        R.id.shop_good_price,R.id.shop_good_sellnum }
-        );
-
-        lv.setAdapter(goods_adapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        MyAdapter goods_adapter=new MyAdapter(view.getContext(),al_goods);
+        goods_adapter.setOnAddButtonListener(new MyAdapter.OnAddButtonListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(view.getContext(), position + "", Toast.LENGTH_SHORT).show();
+            public void onChange() {
+                buy.setVisibility(View.VISIBLE);
             }
         });
+
+        lv.setAdapter(goods_adapter);
+        buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MyApplication.getContext(), "进入结算界面", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

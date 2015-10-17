@@ -14,6 +14,34 @@
         android:background="#fff000"
         >
 
+
+
+        <RelativeLayout
+            android:id="@+id/all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            >
+            <ImageButton
+                android:id="@+id/all_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/all"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/all_icon"
+                android:layout_centerHorizontal="true"
+                android:text="最新商品"
+                android:textColor="#080808"
+                android:textSize="12sp"/>
+
+        </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/per_center"
         android:layout_width="0dp"
@@ -27,6 +55,7 @@
             android:layout_height="32dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/chaoshi"
+
             />
         <TextView
             android:layout_width="wrap_content"

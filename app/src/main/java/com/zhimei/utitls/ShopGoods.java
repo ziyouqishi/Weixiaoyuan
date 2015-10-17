@@ -9,13 +9,13 @@ public class ShopGoods {
     private String price;
     private String sell;
     private String state;
-    private String buynum;
+    private int buynum=0;
 
-    public String getBuynum() {
+    public int getBuynum() {
         return buynum;
     }
 
-    public void setBuynum(String buynum) {
+    public void setBuynum(int buynum) {
         this.buynum = buynum;
     }
 

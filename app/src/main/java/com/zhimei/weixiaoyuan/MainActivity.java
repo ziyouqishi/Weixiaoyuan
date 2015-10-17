@@ -67,6 +67,7 @@ public class MainActivity extends Activity  {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, PersonCenterActivity.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -75,6 +76,8 @@ public class MainActivity extends Activity  {
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,SecoMarketActivity.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                //overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
             }
         });
 
@@ -83,6 +86,8 @@ public class MainActivity extends Activity  {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DonateActivity.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+               // overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
             }
         });
 
@@ -91,6 +96,7 @@ public class MainActivity extends Activity  {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SuperMarketActivity.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             }
         });
 

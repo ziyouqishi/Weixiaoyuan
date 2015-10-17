@@ -8,8 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.zhimei.weixiaoyuan.R;
 
 import java.util.ArrayList;
@@ -28,8 +26,7 @@ public class MyAdapter extends BaseAdapter {
         super();
         al_goods=al;
         this.mInflater = LayoutInflater.from(context);
-       view=LayoutInflater.from(context).inflate(R.layout.fragment_live_tools, null);
-        buy=(Button)view.findViewById(R.id.already_choosed);
+       view=LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.fragment_live_tools, null);
     }
 
     @Override
@@ -50,6 +47,7 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
+        buy=(Button)view.findViewById(R.id.already_choosed);
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.shopitem,null);
             holder = new ViewHolder();
@@ -72,14 +70,37 @@ public class MyAdapter extends BaseAdapter {
         holder.sell.setText(al_goods.get(position).getSell());
         holder.state.setText(al_goods.get(position).getState());
         holder.picture.setImageResource(al_goods.get(position).getPicture());
-        holder.num.setText(al_goods.get(position).getBuynum());
+        holder.num.setText(al_goods.get(position).getBuynum() + "");
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //此时onAddButtonListener的值为LearnToolsFragment中set方法参数中的对象，并且该类重写了onChange（）方法。
+                onAddButtonListener.onChange();
                 buy.setVisibility(View.VISIBLE);
-               ++ num;
-             //  holder.add
-                Toast.makeText(MyApplication.getContext(),"规划加把劲",Toast.LENGTH_SHORT).show();
+                num = al_goods.get(position).getBuynum();
+                ++num;
+                al_goods.get(position).setBuynum(num);
+                holder.num.setText(al_goods.get(position).getBuynum() + "");
+
+               // MyApplication.flag=true;
+            }
+        });
+
+        holder.decrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(al_goods.get(position).getBuynum()==1){
+                    onDecreaseListerer.disappear();
+                }
+
+                num = al_goods.get(position).getBuynum();
+                if(num>0){
+                    --num;
+                    al_goods.get(position).setBuynum(num);
+                    holder.num.setText(al_goods.get(position).getBuynum() + "");
+                }
             }
         });
 
@@ -99,4 +120,29 @@ public class MyAdapter extends BaseAdapter {
 
     }
 
+
+    //按下加的按钮
+
+    public OnAddButtonListener onAddButtonListener;
+
+    public interface OnAddButtonListener{
+         void onChange();
+    }
+
+    public  void setOnAddButtonListener(OnAddButtonListener onAddButtonListener){
+       this.onAddButtonListener = onAddButtonListener;
+    }
+
+
+  //按下减的按钮
+
+    public interface OnDecreaseListerer{
+         void disappear();
+    }
+
+    public OnDecreaseListerer onDecreaseListerer;
+
+    public void setOnDecreaseListener(OnDecreaseListerer onDecreaseListener){
+        this.onDecreaseListerer=onDecreaseListener;
+    }
 }
