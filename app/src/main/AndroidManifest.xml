@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zhimei.weixiaoyuan" >
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
     <application
         android:name="com.zhimei.utitls.MyApplication"
         android:allowBackup="true"
@@ -26,20 +34,10 @@
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name=".PersonCenterActivity"
-            android:label="@string/title_activity_person_center" >
-        </activity>
-        <activity
-            android:name=".SecoMarketActivity"
-            android:label="@string/title_activity_seco_market" >
-        </activity>
-        <activity
-            android:name=".DonateActivity"
-            android:label="@string/title_activity_donate" >
-        </activity>
-        <activity
-            android:name=".SuperMarketActivity"
-            android:label="@string/title_activity_super_market" >
+            android:name=".NetTestActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_net_test"
+            android:theme="@style/FullscreenTheme" >
         </activity>
     </application>
 

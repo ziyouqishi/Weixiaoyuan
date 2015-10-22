@@ -68,6 +68,13 @@ public class JunkDrinkFragment extends Fragment {
             }
         });
 
+        goods_adapter.setOnDecreaseListener(new MyAdapter.OnDecreaseListerer() {
+            @Override
+            public void disappear() {
+                buy.setVisibility(View.INVISIBLE);
+            }
+        });
+
         lv.setAdapter(goods_adapter);
         buy.setOnClickListener(new View.OnClickListener() {
             @Override

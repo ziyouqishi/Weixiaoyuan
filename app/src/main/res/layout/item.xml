@@ -16,7 +16,7 @@
         android:id="@+id/goods_image"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:src="@drawable/aixin"
+        android:src="@mipmap/aixin"
 
         />
     <TextView

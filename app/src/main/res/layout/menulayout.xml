@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:background="#fff000"
+        android:background="#FFFAFA"
         >
 
 
@@ -29,9 +29,10 @@
                 android:layout_height="32dp"
                 android:layout_centerHorizontal="true"
                 android:background="@mipmap/all"
-
+                android:clickable="false"
                 />
             <TextView
+                android:id="@+id/shangpin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/all_icon"
@@ -49,15 +50,17 @@
         android:layout_weight="1"
 
         >
-        <ImageView
+        <ImageButton
             android:id="@+id/sch_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/chaoshi"
+            android:background="@mipmap/chaoshi"
+            android:clickable="false"
 
             />
         <TextView
+            android:id="@+id/xiaoyuanchaoshi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sch_icon"
@@ -77,14 +80,16 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/per_center"
         >
-        <ImageView
+        <ImageButton
             android:id="@+id/sec_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/second"
+            android:background="@mipmap/second"
+            android:clickable="false"
             />
         <TextView
+            android:id="@+id/ershoushichang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sec_icon"
@@ -102,14 +107,16 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/sec_market"
         >
-        <ImageView
+        <ImageButton
             android:id="@+id/don_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/aixin"
+            android:background="@mipmap/aixin"
+            android:clickable="false"
             />
         <TextView
+            android:id="@+id/aixinjuanzneg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/don_icon"
@@ -130,14 +137,17 @@
 
 
 
-        <ImageView
+        <ImageButton
             android:id="@+id/per_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/touxiang"
+            android:background="@mipmap/touxiang"
+
+            android:clickable="false"
             />
         <TextView
+            android:id="@+id/gerenzhongxin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/per_icon"

@@ -1,6 +1,4 @@
-package com.zhimei.weixiaoyuan;
-
-import android.app.Activity;
+package com.zhimei.fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,70 +8,60 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EdgeEffect;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.Toast;
+import com.zhimei.customview.XCicleImageView;
+import com.zhimei.weixiaoyuan.R;
 
 import java.io.File;
 
 
-public class RegisterActivity extends Activity {
-    private ImageButton addPhoto;
+public class DonationFragment extends Fragment {
+    private  View view;
+    private ImageButton commit_photo;
     private Bitmap picture;
     private Uri imageUri;
-    private ImageView imagetest;
-    private EditText et_id;
-    private EditText et_password;
+    private XCicleImageView imagetest;
     private EditText et_name;
-    private EditText et_phone_number;
+    private EditText et_description;
     private static final int TAKE_PHOTO = 1;
     private static final int CROP_PHOTO = 2;
-    private static final int REQUEST_CODE_PICK_IMAGE=3;
-    private static final int CHOOSE_PHOTO_CROP=4;
+    private static final int CHOOSE_PHOTO_CROP=3;
     private  File output;
-    private String id;//学号
-    private String password;//密码
-    private String name;//昵称
-    private String phone_number;//电话号码
-
+    private String name;
+    private  String description;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view=inflater.inflate(R.layout.fragment_donate,container,false);
         initView();
         chooseWays();
-
+        return view;
     }
+
     void initView(){
-        addPhoto=(ImageButton)findViewById(R.id.register_ib_photo);
-        imagetest=(ImageView)findViewById(R.id.imageView_test);
-        et_id=(EditText)findViewById(R.id.reg_et_ID);
-        et_password=(EditText)findViewById(R.id.reg_et_nickname);
-        et_name=(EditText)findViewById(R.id.reg_et_phone);
-        et_phone_number=(EditText)findViewById(R.id.reg_et_password);
-
-        id=et_id.getText().toString();
-        password=et_password.getText().toString();
+        commit_photo=(ImageButton)view.findViewById(R.id.don_ib_photo);
+        imagetest=(XCicleImageView)view.findViewById(R.id.imageView);
+        et_name=(EditText)view.findViewById(R.id.don_et_name);
+        et_description=(EditText)view.findViewById(R.id.don_et_describle);
         name=et_name.getText().toString();
-        phone_number=et_phone_number.getText().toString();
-
-
-
-
+        description=et_description.getText().toString();
     }
 
-     void chooseWays(){
-        addPhoto.setOnClickListener(new View.OnClickListener() {
+    void chooseWays(){
+        commit_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String string[] = {"拍照", "从相册中选取"};
 
-                AlertDialog.Builder dialog = new AlertDialog.Builder(RegisterActivity.this);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(view.getContext());
                 dialog.setTitle("选择照片");
                 dialog.setItems(string, new DialogInterface.OnClickListener() {
                     @Override
@@ -105,28 +93,36 @@ public class RegisterActivity extends Activity {
     private void takephoto() {
 
 
-                output = new File(Environment
-                        .getExternalStorageDirectory(), "output_image.jpg");
-                try {
-                    if (output.exists()) {
-                        output.delete();
-                    }
-                    output.createNewFile();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                imageUri = Uri.fromFile(output);
-                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-                startActivityForResult(intent, TAKE_PHOTO);
-
+        output = new File(Environment
+                .getExternalStorageDirectory(), "output_image.jpg");
+        try {
+            if (output.exists()) {
+                output.delete();
             }
+            output.createNewFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        imageUri = Uri.fromFile(output);
+        /**
+         * 打开拍照的界面
+         */
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+
+       startActivityForResult(intent, TAKE_PHOTO);
+
+    }
 
 
     public void onActivityResult(int req, int res, Intent data) {
         switch (req) {
             case TAKE_PHOTO:
-                if (res == RESULT_OK) {
+                if (res == this.getActivity().RESULT_OK) {
+
+                    /**
+                     * 打开裁剪的界面。
+                     */
                     Intent intent = new Intent("com.android.camera.action.CROP");
                     intent.setDataAndType(imageUri, "image/*");
                     intent.putExtra("scale", true);
@@ -136,15 +132,19 @@ public class RegisterActivity extends Activity {
                 }
                 break;
             case CROP_PHOTO:
-                if (res == RESULT_OK) {
+                if (res == this.getActivity().RESULT_OK) {
+                    /**
+                     * 将裁剪后的图片进行处理， Uri uri = data.getData();得到裁剪后图片的uri。
+                     */
                     try {
                         Uri uri = data.getData();
                         Bitmap bit = BitmapFactory
-                                .decodeStream(getContentResolver().openInputStream(
+                                .decodeStream(this.getActivity().getContentResolver().openInputStream(
                                         uri));
                         picture=bit;
                         imagetest.setImageBitmap(picture);
                         imagetest.setVisibility(View.VISIBLE);
+                        // finish();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -155,7 +155,7 @@ public class RegisterActivity extends Activity {
                  * 对相册中的图片进行裁剪，首先要得到被选中图片的URI
                  */
                 Uri uri_photo = data.getData();
-                if (res == RESULT_OK) {
+                if (res == this.getActivity().RESULT_OK) {
                     Intent intent = new Intent("com.android.camera.action.CROP");
                     intent.setDataAndType(uri_photo, "image/*");
                     intent.putExtra("scale", true);
@@ -171,15 +171,18 @@ public class RegisterActivity extends Activity {
         }
     }
 
+
     /**
      * 选择相册图片
      */
     private void choosephoto() {
+        /**
+         * 打开选择图片的界面，选择结束后，进入裁剪界面
+         */
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");//相片类型
         startActivityForResult(intent, CHOOSE_PHOTO_CROP);
 
     }
-
 
 }
