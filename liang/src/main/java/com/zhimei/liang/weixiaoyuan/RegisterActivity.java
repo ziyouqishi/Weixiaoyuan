@@ -15,14 +15,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.zhimei.liang.customview.RoundImageView;
+
 import java.io.File;
 
 
 public class RegisterActivity extends Activity {
-    private ImageButton addPhoto;
+    private ImageView addPhoto;
     private Bitmap picture;
     private Uri imageUri;
-    private ImageView imagetest;
+   // private ImageView imagetest;
     private EditText et_id;
     private EditText et_password;
     private EditText et_name;
@@ -47,17 +49,17 @@ public class RegisterActivity extends Activity {
 
     }
     void initView(){
-        addPhoto=(ImageButton)findViewById(R.id.register_ib_photo);
-        imagetest=(ImageView)findViewById(R.id.imageView_test);
-        et_id=(EditText)findViewById(R.id.reg_et_ID);
+        addPhoto=(RoundImageView)findViewById(R.id.register_ib_photo);
+       // imagetest=(ImageView)findViewById(R.id.imageView_test);
+       // et_id=(EditText)findViewById(R.id.reg_et_ID);
         et_password=(EditText)findViewById(R.id.reg_et_nickname);
         et_name=(EditText)findViewById(R.id.reg_et_phone);
-        et_phone_number=(EditText)findViewById(R.id.reg_et_password);
+       // et_phone_number=(EditText)findViewById(R.id.reg_et_password);
 
-        id=et_id.getText().toString();
+       /* id=et_id.getText().toString();*/
         password=et_password.getText().toString();
         name=et_name.getText().toString();
-        phone_number=et_phone_number.getText().toString();
+      /*  phone_number=et_phone_number.getText().toString();*/
 
 
 
@@ -141,8 +143,9 @@ public class RegisterActivity extends Activity {
                                 .decodeStream(getContentResolver().openInputStream(
                                         uri));
                         picture=bit;
-                        imagetest.setImageBitmap(picture);
-                        imagetest.setVisibility(View.VISIBLE);
+                       /* imagetest.setImageBitmap(picture);
+                        imagetest.setVisibility(View.VISIBLE);*/
+                        addPhoto.setImageBitmap(picture);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

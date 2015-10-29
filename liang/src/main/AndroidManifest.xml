@@ -39,6 +39,10 @@
             android:name=".Need_release_Activity"
             android:label="@string/title_activity_need_release_" >
         </activity>
+        <activity
+            android:name=".DonateSuccessActivity"
+            android:label="@string/title_activity_donate_success" >
+        </activity>
     </application>
 
 </manifest>

@@ -13,10 +13,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.zhimei.liang.customview.XCicleImageView;
+import com.zhimei.liang.weixiaoyuan.DonateSuccessActivity;
 import com.zhimei.liang.weixiaoyuan.R;
 
 import java.io.File;
@@ -25,6 +27,7 @@ import java.io.File;
 public class DonationFragment extends Fragment {
     private  View view;
     private ImageButton commit_photo;
+    private Button donate;
     private Bitmap picture;
     private Uri imageUri;
     private XCicleImageView imagetest;
@@ -53,6 +56,14 @@ public class DonationFragment extends Fragment {
         et_description=(EditText)view.findViewById(R.id.don_et_describle);
         name=et_name.getText().toString();
         description=et_description.getText().toString();
+        donate=(Button)view.findViewById(R.id.ensure_donate);
+        donate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(view.getContext(), DonateSuccessActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     void chooseWays(){

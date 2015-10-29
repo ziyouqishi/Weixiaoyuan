@@ -40,6 +40,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_goods_release_">Goods_release_Activity</string>
     <string name="title_activity_need_release_">Need_release_Activity</string>
+    <string name="title_activity_donate_success">DonateSuccessActivity</string>
 
 
 </resources>
