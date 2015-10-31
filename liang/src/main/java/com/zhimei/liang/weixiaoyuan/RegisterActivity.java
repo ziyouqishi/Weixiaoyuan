@@ -10,14 +10,22 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.zhimei.liang.customview.RoundImageView;
 
 import java.io.File;
+import java.util.HashMap;
+
+import cn.smssdk.EventHandler;
+import cn.smssdk.SMSSDK;
+import cn.smssdk.gui.RegisterPage;
 
 
 public class RegisterActivity extends Activity {
@@ -25,16 +33,16 @@ public class RegisterActivity extends Activity {
     private Bitmap picture;
     private Uri imageUri;
    // private ImageView imagetest;
-    private EditText et_id;
+    private EditText et_address;
     private EditText et_password;
     private EditText et_name;
-    private EditText et_phone_number;
+    private Button next;
     private static final int TAKE_PHOTO = 1;
     private static final int CROP_PHOTO = 2;
     private static final int REQUEST_CODE_PICK_IMAGE=3;
     private static final int CHOOSE_PHOTO_CROP=4;
     private  File output;
-    private String id;//学号
+    private String address;//地址
     private String password;//密码
     private String name;//昵称
     private String phone_number;//电话号码
@@ -44,16 +52,19 @@ public class RegisterActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        SMSSDK.initSDK(this, "bb55d5170bea", "89c378517a900a7b3d4fea2199d2c561");
         initView();
         chooseWays();
+        sendSMS();
 
     }
     void initView(){
         addPhoto=(RoundImageView)findViewById(R.id.register_ib_photo);
        // imagetest=(ImageView)findViewById(R.id.imageView_test);
-       // et_id=(EditText)findViewById(R.id.reg_et_ID);
-        et_password=(EditText)findViewById(R.id.reg_et_nickname);
-        et_name=(EditText)findViewById(R.id.reg_et_phone);
+        et_address=(EditText)findViewById(R.id.reg_et_address);
+        et_password=(EditText)findViewById(R.id.reg_et_password);
+        et_name=(EditText)findViewById(R.id.reg_et_name);
+        next=(Button)findViewById(R.id.reg_submit);
        // et_phone_number=(EditText)findViewById(R.id.reg_et_password);
 
        /* id=et_id.getText().toString();*/
@@ -63,6 +74,74 @@ public class RegisterActivity extends Activity {
 
 
 
+
+    }
+
+    void sendSMS(){
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // getData();
+
+                address=et_address.getText().toString();
+                password=et_password.getText().toString();
+                name=et_name.getText().toString();
+                RegisterPage registerPage = new RegisterPage();
+               // Toast.makeText(RegisterActivity.this,address,Toast.LENGTH_SHORT).show();
+                if(address.equals("")){
+                    Toast.makeText(RegisterActivity.this,"亲，请填写地址",Toast.LENGTH_SHORT).show();
+                }
+                else if(password.equals("")){
+                    Toast.makeText(RegisterActivity.this,"亲，请填写密码",Toast.LENGTH_SHORT).show();
+                }
+                else if(name.equals("")){
+                    Toast.makeText(RegisterActivity.this,"亲，请填写昵称",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                  registerPage.show(RegisterActivity.this);
+                }
+
+                registerPage.setRegisterCallback(new EventHandler() {
+                    public void afterEvent(int event, int result, Object data) {
+
+                        if (result == SMSSDK.RESULT_COMPLETE) {
+                            @SuppressWarnings("unchecked")
+                            HashMap<String, Object> phoneMap = (HashMap<String, Object>) data;
+                            String country = (String) phoneMap.get("country");
+                            String phone = (String) phoneMap.get("phone");
+                            Log.i("liang", phone);
+
+
+                            SMSSDK.submitUserInfo("123", "jialiang", null, "", "18842647883");
+                        }
+                    }
+
+                    @Override
+                    public void beforeEvent(int i, Object o) {
+                        super.beforeEvent(i, o);
+                        Log.i("liang","gvtrhjtesrgtrhgt");
+                    }
+                });
+              //  registerPage.show(RegisterActivity.this);
+
+            }
+        });
+    }
+
+
+    void getData(){
+        address=et_address.getText().toString();
+        password=et_password.getText().toString();
+        name=et_name.getText().toString();
+        if(address==null||address==""){
+            Toast.makeText(RegisterActivity.this,"亲，请填写地址",Toast.LENGTH_SHORT).show();
+        }
+        else if(password==null||password==""){
+            Toast.makeText(RegisterActivity.this,"亲，请填写密码",Toast.LENGTH_SHORT).show();
+        }
+        else if(name==null||name==""){
+            Toast.makeText(RegisterActivity.this,"亲，请填写昵称",Toast.LENGTH_SHORT).show();
+        }
 
     }
 

@@ -157,7 +157,7 @@
                 android:layout_centerVertical="true"/>
 
             <EditText
-                android:id="@+id/reg_et_phone"
+                android:id="@+id/reg_et_name"
                 android:layout_toRightOf="@+id/reg_tv_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -197,7 +197,7 @@
                 android:layout_centerVertical="true"/>
 
             <EditText
-                android:id="@+id/reg_et_nickname"
+                android:id="@+id/reg_et_password"
                 android:layout_toRightOf="@+id/reg_tv_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -219,45 +219,45 @@
         </RelativeLayout>
 
 
-       <!-- <RelativeLayout
-            android:id="@+id/reg_password"
+       <RelativeLayout
+            android:id="@+id/reg_address"
             android:layout_width="wrap_content"
-            android:layout_below="@+id/reg_phone"
+            android:layout_below="@+id/reg_password"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
 
             <TextView
-                android:id="@+id/reg_tv_password"
+                android:id="@+id/reg_tv_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
-                android:text="电话号码："
+                android:text="地址"
                 android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"/>
 
             <EditText
-                android:id="@+id/reg_et_password"
-                android:layout_toRightOf="@+id/reg_tv_password"
+                android:id="@+id/reg_et_address"
+                android:layout_toRightOf="@+id/reg_tv_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="15"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginRight="20dp"
                 android:singleLine="true"
-                android:phoneNumber="true"
+                android:hint="请详细到宿舍号"
                 />
 
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/reg_tv_password"
+                android:layout_below="@+id/reg_tv_address"
                 android:layout_marginTop="15dp"
                 android:src="@drawable/henxian"
                 android:paddingTop="10dp"
                 />
 
-        </RelativeLayout>-->
+        </RelativeLayout>
 
  <!--       <RelativeLayout
             android:id="@+id/add_photo_register"
@@ -306,7 +306,7 @@
             android:id="@+id/reg_four"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_below="@+id/reg_password"
+            android:layout_below="@+id/reg_address"
             android:layout_marginTop="15dp"
             android:background="#F0F8FF">
 
