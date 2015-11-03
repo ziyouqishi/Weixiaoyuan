@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zhimei.liang.weixiaoyuan" >
+
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -54,9 +55,25 @@
         </activity>
         <activity
             android:name="com.mob.tools.MobUIShell"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ScoreActivity"
+            android:label="@string/title_activity_score" >
+        </activity>
+        <activity
+            android:name=".TradeRecordActivity"
+            android:label="@string/title_activity_trade_record" >
+        </activity>
+        <activity
+            android:name=".AlterAddressActivity"
+            android:label="@string/title_activity_alter_address" >
+        </activity>
+        <activity
+            android:name=".DonationRecordActivity"
+            android:label="@string/title_activity_donation_record" >
+        </activity>
     </application>
 
 </manifest>

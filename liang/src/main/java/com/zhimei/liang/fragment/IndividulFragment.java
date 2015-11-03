@@ -6,13 +6,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+
+import com.zhimei.liang.weixiaoyuan.AlterAddressActivity;
+import com.zhimei.liang.weixiaoyuan.DonationRecordActivity;
 import com.zhimei.liang.weixiaoyuan.R;
 
 import com.zhimei.liang.weixiaoyuan.LoginActivity;
+import com.zhimei.liang.weixiaoyuan.ScoreActivity;
+import com.zhimei.liang.weixiaoyuan.TradeRecordActivity;
 
 public class IndividulFragment extends Fragment {
     private  View view;
     private Button login;
+    private RelativeLayout myScore;
+    private RelativeLayout record;
+    private RelativeLayout address;
+    private RelativeLayout donationRecord;
 
 
     @Override
@@ -24,11 +34,47 @@ public class IndividulFragment extends Fragment {
     }
     void initview(){
         login=(Button)view.findViewById(R.id.per_bt_login);
+        myScore=(RelativeLayout)view.findViewById(R.id.per_score);
+        record=(RelativeLayout)view.findViewById(R.id.per_tradedetail);
+        address=(RelativeLayout)view.findViewById(R.id.per_modifyaddress);
+        donationRecord=(RelativeLayout)view.findViewById(R.id.per_donatedetail);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(view.getContext(),LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        myScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(view.getContext(),ScoreActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        record.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(view.getContext(),TradeRecordActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(view.getContext(),AlterAddressActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        donationRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(), DonationRecordActivity.class);
                 startActivity(intent);
             }
         });

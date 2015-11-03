@@ -99,6 +99,7 @@ public class RegisterActivity extends Activity {
                 }
                 else{
                   registerPage.show(RegisterActivity.this);
+                    //RegisterPage.etPhoneNum.setText("18842647883");
                 }
 
                 registerPage.setRegisterCallback(new EventHandler() {
@@ -110,6 +111,9 @@ public class RegisterActivity extends Activity {
                             String country = (String) phoneMap.get("country");
                             String phone = (String) phoneMap.get("phone");
                             Log.i("liang", phone);
+                           // Toast.makeText(RegisterActivity.this,RegisterPage.etPhoneNum.getText(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this,phone,Toast.LENGTH_SHORT).show();
+
 
 
                             SMSSDK.submitUserInfo("123", "jialiang", null, "", "18842647883");
@@ -119,7 +123,6 @@ public class RegisterActivity extends Activity {
                     @Override
                     public void beforeEvent(int i, Object o) {
                         super.beforeEvent(i, o);
-                        Log.i("liang","gvtrhjtesrgtrhgt");
                     }
                 });
               //  registerPage.show(RegisterActivity.this);

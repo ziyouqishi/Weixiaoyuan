@@ -43,6 +43,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         setSelect(0);
     }
 
+   /* @Override
+    protected void onRestart() {
+        super.onRestart();
+        gridview=(GridView)findViewById(R.id.gridview);
+        initview();
+        setSelect(0);
+    }*/
+
     void initview(){
         index=(ImageButton)findViewById(R.id.all_icon);
         supmarket=(ImageButton)findViewById(R.id.sch_icon);
@@ -199,6 +207,30 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
         if(frg_individul!=null){
             transaction.hide(frg_individul);
+        }
+    }
+
+
+    /**
+     *
+     * @param fragment
+     * 解决 tab中的fragment重叠问题
+     */
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        // TODO Auto-generated method stub
+        super.onAttachFragment(fragment);
+
+        if (frg_index == null && fragment instanceof IndexFragment) {
+            frg_index = (IndexFragment)fragment;
+        }else if (frg_market == null && fragment instanceof SupernarketFragment) {
+            frg_market = (SupernarketFragment)fragment;
+        }else if (frg_hand == null && fragment instanceof SecHandFragment) {
+            frg_hand = (SecHandFragment)fragment;
+        }else if(frg_donation == null && fragment instanceof DonationFragment){
+            frg_donation = (DonationFragment)fragment;
+        }else if(frg_individul == null && fragment instanceof IndividulFragment){
+            frg_individul = (IndividulFragment)fragment;
         }
     }
 

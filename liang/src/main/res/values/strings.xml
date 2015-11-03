@@ -41,6 +41,10 @@
     <string name="title_activity_goods_release_">Goods_release_Activity</string>
     <string name="title_activity_need_release_">Need_release_Activity</string>
     <string name="title_activity_donate_success">DonateSuccessActivity</string>
+    <string name="title_activity_score">ScoreActivity</string>
+    <string name="title_activity_trade_record">TradeRecordActivity</string>
+    <string name="title_activity_alter_address">AlterAddressActivity</string>
+    <string name="title_activity_donation_record">DonationRecordActivity</string>
 
 
 </resources>

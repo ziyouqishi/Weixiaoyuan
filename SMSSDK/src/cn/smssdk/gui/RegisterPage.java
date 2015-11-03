@@ -57,7 +57,7 @@ public class RegisterPage extends FakeActivity implements OnClickListener,
 	// 国家
 	private TextView tvCountry;
 	// 手机号码
-	private EditText etPhoneNum;
+	public static EditText etPhoneNum;
 	// 国家编号
 	private TextView tvCountryNum;
 	// clear 号码

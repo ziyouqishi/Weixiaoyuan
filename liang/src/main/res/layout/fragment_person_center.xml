@@ -150,7 +150,7 @@
                     android:textSize="18dp"
                     android:layout_marginLeft="13dp"
                     android:layout_centerVertical="true"
-                    android:text="交易详情"/>
+                    android:text="交易记录"/>
 
 
             </RelativeLayout>
