@@ -18,12 +18,12 @@
             android:layout_centerVertical="true"
             >
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/reg_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:src="@mipmap/backhome"
+                android:background="@mipmap/backhome"
                 />
             <TextView
                 android:id="@+id/reg_name"
@@ -33,14 +33,14 @@
                 android:textSize="23dp"
                 android:text="注册账号"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/reg_index"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignTop="@+id/reg_back"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
-                android:src="@mipmap/back"
+                android:background="@mipmap/back"
                 />
 
 

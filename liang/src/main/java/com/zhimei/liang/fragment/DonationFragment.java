@@ -1,6 +1,7 @@
 package com.zhimei.liang.fragment;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,18 +11,28 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.zhimei.liang.customview.XCicleImageView;
+import com.zhimei.liang.utitls.DonationRecord;
+import com.zhimei.liang.utitls.MyApplication;
+import com.zhimei.liang.utitls.RealPath;
+import com.zhimei.liang.utitls.SecondHandGoods;
 import com.zhimei.liang.weixiaoyuan.DonateSuccessActivity;
 import com.zhimei.liang.weixiaoyuan.R;
 
 import java.io.File;
+
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UploadFileListener;
 
 
 public class DonationFragment extends Fragment {
@@ -38,7 +49,10 @@ public class DonationFragment extends Fragment {
     private static final int CHOOSE_PHOTO_CROP=3;
     private  File output;
     private String name;
-    private  String description;
+    private  String organizationi;//接收的组织
+    private String picturePath;//照片存储路径
+    private ProgressDialog progressDialog;
+    private BmobFile bmobFile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,14 +68,31 @@ public class DonationFragment extends Fragment {
         imagetest=(XCicleImageView)view.findViewById(R.id.imageView);
         et_name=(EditText)view.findViewById(R.id.don_et_name);
         et_description=(EditText)view.findViewById(R.id.don_et_describle);
-        name=et_name.getText().toString();
-        description=et_description.getText().toString();
         donate=(Button)view.findViewById(R.id.ensure_donate);
         donate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(view.getContext(), DonateSuccessActivity.class);
-                startActivity(intent);
+                name = et_name.getText().toString();
+                organizationi = et_description.getText().toString();
+               /* Intent intent=new Intent(view.getContext(), DonateSuccessActivity.class);
+                startActivity(intent);*/
+
+                if(MyApplication.isSignUPSuccess()){
+                    if (name.equals("")) {
+                        Toast.makeText(view.getContext(), "亲，请输入名称", Toast.LENGTH_SHORT).show();
+                    } else if (organizationi.equals("")) {
+                        Toast.makeText(view.getContext(), "亲，请输入接收单位", Toast.LENGTH_SHORT).show();
+                    } else if (picture == null) {
+                        Toast.makeText(view.getContext(), "亲，请上传照片", Toast.LENGTH_SHORT).show();
+                    } else {
+                        loadFileandSignUp();
+                    }
+                }
+                else{
+                    Toast.makeText(view.getContext(), "亲，请先登录", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
     }
@@ -139,6 +170,8 @@ public class DonationFragment extends Fragment {
                     intent.setDataAndType(imageUri, "image/*");
                     intent.putExtra("scale", true);
                     intent.putExtra("MediaStore.EXTRA_OUTPUT", imageUri);
+                    intent.putExtra("outputX", 300);
+                    intent.putExtra("outputY", 400);
 
                     startActivityForResult(intent, CROP_PHOTO);
                 }
@@ -156,6 +189,8 @@ public class DonationFragment extends Fragment {
                         picture=bit;
                         imagetest.setImageBitmap(picture);
                         imagetest.setVisibility(View.VISIBLE);
+                        picturePath= RealPath.getPath(view.getContext(), uri);
+                        Log.i("jialiang", picturePath);
                         // finish();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -172,6 +207,8 @@ public class DonationFragment extends Fragment {
                     intent.setDataAndType(uri_photo, "image/*");
                     intent.putExtra("scale", true);
                     intent.putExtra("MediaStore.EXTRA_OUTPUT", uri_photo);
+                    intent.putExtra("outputX", 300);
+                    intent.putExtra("outputY", 400);
 
                     startActivityForResult(intent, CROP_PHOTO);
                 }
@@ -195,6 +232,63 @@ public class DonationFragment extends Fragment {
         intent.setType("image/*");//相片类型
         startActivityForResult(intent, CHOOSE_PHOTO_CROP);
 
+    }
+
+
+    void loadFileandSignUp(){
+        progressDialog= ProgressDialog.show(view.getContext(), "", "正在登录中");
+        // String path=Environment.getExternalStorageDirectory()+"/xiao.jpeg";
+        bmobFile=new BmobFile(new File(picturePath));
+        bmobFile.uploadblock(view.getContext(), new UploadFileListener() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(view.getContext(), "图片上传成功" + bmobFile.getFileUrl(view.getContext()), Toast.LENGTH_SHORT).show();
+                // sign();
+                MyApplication.setTestUrl(bmobFile.getFileUrl(view.getContext()));
+                loadSecondGoods();
+
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Toast.makeText(view.getContext(), s, Toast.LENGTH_SHORT).show();
+                Log.i("jialiang", s);
+                /**
+                 * 图片上传失败时，关掉进度条
+                 */
+                progressDialog.dismiss();
+            }
+        });
+    }
+
+    void loadSecondGoods(){
+       /* SecondHandGoods secondHandGoods=new SecondHandGoods();
+        secondHandGoods.setName(goodName);
+        secondHandGoods.setPrice(goodPrice);
+        secondHandGoods.setDescription(goodDescreption);
+        secondHandGoods.setPictureFile(bmobFile);
+        secondHandGoods.setCategory(catagary);
+        secondHandGoods.setTradeWay("卖出");*/
+        DonationRecord donationRecord=new DonationRecord();
+        donationRecord.setName(name);
+        donationRecord.setReceiveOrganization(organizationi);
+        donationRecord.setPublishMan(MyApplication.getCurrentName());
+        donationRecord.setPictureFile(bmobFile);
+        donationRecord.save(view.getContext(), new SaveListener() {
+            @Override
+            public void onSuccess() {
+                progressDialog.dismiss();
+                Toast.makeText(view.getContext(), "商品发布成功", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), DonateSuccessActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                progressDialog.dismiss();
+                Toast.makeText(view.getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

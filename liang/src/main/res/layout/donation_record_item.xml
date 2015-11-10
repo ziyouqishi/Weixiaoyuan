@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
 
-    <com.zhimei.liang.customview.RoundImageView
+    <com.zhimei.liang.customview.CircleImageView
         android:id="@+id/donation_good_picture"
         android:layout_width="80dp"
         android:layout_height="80dp"

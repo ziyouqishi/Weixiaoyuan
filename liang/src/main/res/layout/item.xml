@@ -47,18 +47,19 @@
 
     <TextView
         android:id="@+id/goods_attention"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/hengxian"
-        android:layout_alignLeft="@+id/goods_image"
+        android:layout_alignLeft="@+id/hengxian"
+        android:layout_alignRight="@+id/hengxian"
         android:textSize="13sp"
-        android:text="5人围观"/>
+        android:text="这是我今年九月份才买的，只用了几天..."/>
 
     <TextView
         android:id="@+id/goods_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/hengxian"
+        android:layout_below="@+id/goods_attention"
         android:layout_alignRight="@+id/goods_image"
         android:textSize="13sp"
         android:text="三天前"/>

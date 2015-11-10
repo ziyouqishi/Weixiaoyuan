@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.zhimei.liang.utitls.MyApplication;
 import com.zhimei.liang.weixiaoyuan.AlterAddressActivity;
 import com.zhimei.liang.weixiaoyuan.DonationRecordActivity;
 import com.zhimei.liang.weixiaoyuan.R;
@@ -50,32 +52,53 @@ public class IndividulFragment extends Fragment {
         myScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(view.getContext(),ScoreActivity.class);
-                startActivity(intent);
+                if(MyApplication.isSignUPSuccess()){
+                    Intent intent=new Intent(view.getContext(),ScoreActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(view.getContext(),"亲，请先登录",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(view.getContext(),TradeRecordActivity.class);
-                startActivity(intent);
+                if(MyApplication.isSignUPSuccess()){
+                    Intent intent=new Intent(view.getContext(),TradeRecordActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(view.getContext(),"亲，请先登录",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(view.getContext(),AlterAddressActivity.class);
-                startActivity(intent);
+                if(MyApplication.isSignUPSuccess()){
+                    Intent intent=new Intent(view.getContext(),AlterAddressActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(view.getContext(),"亲，请先登录",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         donationRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(view.getContext(), DonationRecordActivity.class);
-                startActivity(intent);
+                if(MyApplication.isSignUPSuccess()){
+                    Intent intent = new Intent(view.getContext(), DonationRecordActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(view.getContext(),"亲，请先登录",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

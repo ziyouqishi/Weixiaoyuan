@@ -1,16 +1,29 @@
 package com.zhimei.liang.utitls;
 
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by 张佳亮 on 2015/11/1.
+ * 交易记录
  */
 public class TradeRecord {
     private String good_name;
     private String time;
-    private Drawable picture;
+    private Bitmap picture;
     private String price;
     private String ways;
+    private BmobFile pictureFile;
+
+    public BmobFile getPictureFile() {
+        return pictureFile;
+    }
+
+    public void setPictureFile(BmobFile pictureFile) {
+        this.pictureFile = pictureFile;
+    }
 
     public String getWays() {
         return ways;
@@ -20,7 +33,7 @@ public class TradeRecord {
         this.ways = ways;
     }
 
-    public TradeRecord(String good_name, String time, Drawable picture, String price, String ways) {
+    public TradeRecord(String good_name, String time, Bitmap picture, String price, String ways) {
         this.good_name = good_name;
         this.time = time;
         this.picture = picture;
@@ -45,11 +58,11 @@ public class TradeRecord {
         this.time = time;
     }
 
-    public Drawable getPicture() {
+    public Bitmap getPicture() {
         return picture;
     }
 
-    public void setPicture(Drawable picture) {
+    public void setPicture(Bitmap picture) {
         this.picture = picture;
     }
 
@@ -61,7 +74,7 @@ public class TradeRecord {
         this.price = price;
     }
 
-    public TradeRecord(String good_name, String time, Drawable picture, String price) {
+    public TradeRecord(String good_name, String time, Bitmap picture, String price) {
         this.good_name = good_name;
         this.time = time;
         this.picture = picture;

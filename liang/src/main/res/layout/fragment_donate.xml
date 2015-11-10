@@ -119,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_toRightOf="@+id/add_photo"
+                android:layout_alignRight="@+id/don_et_describle"
                 android:layout_marginRight="15dp"
                 android:layout_alignTop="@+id/add_photo">
                 <com.zhimei.liang.customview.XCicleImageView
